@@ -1,0 +1,69 @@
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.pyo
+
+# Django specific
+*.log
+*.pot
+*.py[cod]
+*.sqlite3
+db.sqlite3
+
+# Environment variables file
+.env
+
+# Ignore the media folder (user uploads)
+media/
+
+# Ignore static files generated
+/static/
+staticfiles/
+
+# Local development settings
+local_settings.py
+
+# macOS specific files
+.DS_Store
+
+# Virtual environment
+venv/
+env/
+
+# VSCode specific files
+.vscode/
+
+# PyCharm specific files
+.idea/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Test coverage and reports
+.coverage
+coverage.xml
+*.cover
+.hypothesis/
+.tox/
+.pytest_cache/
+nosetests.xml
+test-results.xml
+reports/
+
+# Ignore build artifacts
+*.egg
+*.egg-info/
+dist/
+build/
+*.manifest
+*.spec
+pip-wheel-metadata/
+
+# Ignore celery beat schedule file
+celerybeat-schedule
+
+# Ignore compiled translations
+*.mo
+notepad/notepad/settings.py
