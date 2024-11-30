@@ -6,7 +6,7 @@ from .serializers import NoteSerializer
 from django.http import response
 from rest_framework.serializers import Serializer
 from api import serializers
-from .utils import updateNote, getNoteDetail, deleteNote, getNoteList, createNote
+from .utils import updateNote, getNoteDetail, deleteNote, getNotesList, createNote
 
 
 @api_view(['GET'])
