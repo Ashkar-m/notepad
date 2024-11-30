@@ -3,6 +3,10 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Note
 from .serializers import NoteSerializer
+from django.http import response
+from rest_framework.serializers import Serializer
+from api import serializers
+from .utils import updateNote, getNoteDetail, deleteNote, getNoteList, createNote
 
 
 @api_view(['GET'])
@@ -43,11 +47,13 @@ def getRoutes(request):
     return Response(routes)
 
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def getNotes(request):
-    notes = Note.objects.all()
-    serializer = NoteSerializer(notes, many=True)
-    return Response(serializer.data)
+    if request.method == 'GET':
+        return getNotesList(request)
+    if request.method == 'POST':
+        return createNote(request)
+    
 
 
 @api_view(['GET'])
