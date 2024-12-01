@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
 
-const NotePage = ({ match, history }) => {
+const NotePage = ({ history }) => {
 
-    let noteId = match.params.id
+    const { id } = useParams();
+    const navigate = useNavigate();
     let [note, setNote] = useState(null);
+    let noteId = id
+    
 
     useEffect( () => {
         getNote()
@@ -12,13 +16,13 @@ const NotePage = ({ match, history }) => {
     let getNote = async () => {
         if (noteId === 'new') return
 
-        let response = await fetch(`/api/notes/${noteId}/`);
+        let response = await fetch(`http://127.0.0.1:8000/api/notes/${noteId}/`);
         let data = await response.json();
         setNote(data);
     }
 
     let createNote = async () => {
-        fetch(`/api/notes/`, {
+        fetch(`http://127.0.0.1:8000/api/notes/`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -28,7 +32,7 @@ const NotePage = ({ match, history }) => {
     }
 
     let updateNote = async () => {
-        fetch(`/api/notes/${noteId}/`, {
+        fetch(`http://127.0.0.1:8000/api/notes/${noteId}/`, {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
@@ -38,13 +42,14 @@ const NotePage = ({ match, history }) => {
     }
 
     let deleteNote = async () => {
-        fetch(`/api/notes/${noteId}/`, {
+        fetch(`http://127.0.0.1:8000/api/notes/${noteId}/`, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json'
             },
         })
-        history.push('/')
+        
+        navigate('/')
     }
 
     let handleSubmit = () => {
@@ -55,7 +60,7 @@ const NotePage = ({ match, history }) => {
         } else if (noteId === 'new' && note.body !== null) {
             createNote();
         }
-        history.push('/')
+        navigate('/')
     }
 
     let handleChange = (value) => {

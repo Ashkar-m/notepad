@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 const AddButton = () => {
   return (
     <div>
-        <Link to="/note/new" className="floating-button">
+        {/* <Link to="/note/new" className="floating-button">
             Add
-        </Link>
+        </Link> */}
       
     </div>
   )

@@ -1,6 +1,7 @@
 from rest_framework.response import Response
 from .models import Note
 from .serializers import NoteSerializer
+from rest_framework import status
 
 def getNotesList(request):
     notes = Note.objects.all().order_by('-updated')
@@ -25,13 +26,18 @@ def createNote(request):
 
 def updateNote(request, pk):
     data = request.data
-    note = Note.objects.get(id=pk)
+    try:
+        note = Note.objects.get(id=pk)
+    except Note.DoesNotExist:
+        return Response({'error': 'Note not found'}, status.HTTP_404_NOT_FOUND)
+    
     serializer = NoteSerializer(instance=note, data=data)
 
     if serializer.is_valid():
         serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
     
-    return serializer.data
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 def deleteNote(request, pk):
