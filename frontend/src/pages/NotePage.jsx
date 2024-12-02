@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 
-const NotePage = ({ history }) => {
+const NotePage = () => {
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -70,7 +70,7 @@ const NotePage = ({ history }) => {
   return (
     <div className='note'>
         <div className='note-header'>
-            <h3> <button onClick={handleSubmit}>Left</button> </h3>
+            <h3> <button onClick={handleSubmit}> &lt; </button> </h3>
             {noteId !== 'new' ? (
                 <button onClick={deleteNote}>Delete</button>
             ) : (
