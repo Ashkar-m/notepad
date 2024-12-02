@@ -1,4 +1,43 @@
-version: "3.8"
+# version: "3.8"
+# services:
+#   backend:
+#     build:
+#       context: ./notepad
+#     container_name: django_app
+#     ports:
+#       - "8000:8000"
+#     volumes:
+#       - ./backend:/app
+#       - sqlite_data:/app/db.sqlite3
+#     env_file:
+#       - .env
+#     depends_on:
+#       - db
+  
+#   frontend:
+#     build:
+#       context: ./frontend
+#     container_name: react_app
+#     ports:
+#       - "5173:5173"
+#     volumes:
+#       - ./frontend:/app
+#     stdin_open: true
+#     tty: true
+  
+#   # db:
+#   #   image: postgres:14
+#   #   container_name: postgres_db
+#   #   ports:
+#   #     - "5432:5432"
+#   #   environment:
+#   #     POSTGRES_USER: 
+#   #     POSTGRES_PASSWORD:
+#   #     POSTGRES_DB:
+#   #   volumes:
+#   #     - db_data:/var/lib/postgresql/data
+# volumes:
+#   sqlite_data:
 services:
   backend:
     build:
@@ -10,8 +49,6 @@ services:
       - ./backend:/app
     env_file:
       - .env
-    depends_on:
-      - db
   
   frontend:
     build:
@@ -23,17 +60,3 @@ services:
       - ./frontend:/app
     stdin_open: true
     tty: true
-  
-  db:
-    image: postgres:14
-    container_name: postgres_db
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_USER: 
-      POSTGRES_PASSWORD:
-      POSTGRES_DB:
-    volumes:
-      - db_data:/var/lib/postgresql/data
-volumes:
-  db_data:
