@@ -38,6 +38,9 @@
 #   #     - db_data:/var/lib/postgresql/data
 # volumes:
 #   sqlite_data:
+
+version: "3.8"
+
 services:
   backend:
     build:
@@ -46,7 +49,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./backend:/app
+      - ./notepad:/app
     env_file:
       - .env
   
