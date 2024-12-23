@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 let getTime = (note) => {
     return new Date(note.updated).toLocaleDateString()
 }
+// function for get title
 
 let getTitle = (note) => {
 
